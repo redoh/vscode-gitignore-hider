@@ -3,7 +3,12 @@
   "displayName": "Gitignore Hider",
   "description": "Toggle hiding of .gitignore entries in the VS Code Explorer",
   "version": "0.0.1",
-  "publisher": "local",
+  "icon": "gitignore-hider.png",
+  "publisher": "redoh",
+  "author": {
+    "name": "S. Ferit Arslan",
+    "email": "ferit@msn.com"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
