@@ -1,0 +1,75 @@
+{
+  "name": "vscode-gitignore-hider",
+  "displayName": "Gitignore Hider",
+  "description": "Toggle hiding of .gitignore entries in the VS Code Explorer",
+  "version": "0.0.1",
+  "publisher": "local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redoh/vscode-gitignore-hider.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "gitignoreHider.hide",
+        "title": "Gitignore Hider: Hide .gitignore Entries",
+        "icon": "$(eye-closed)"
+      },
+      {
+        "command": "gitignoreHider.show",
+        "title": "Gitignore Hider: Show .gitignore Entries",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "gitignoreHider.toggle",
+        "title": "Gitignore Hider: Toggle",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "gitignoreHider.refresh",
+        "title": "Gitignore Hider: Refresh from .gitignore"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "gitignoreHider.toggle",
+          "when": "view == workbench.explorer.fileView",
+          "group": "navigation@99"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Gitignore Hider",
+      "properties": {
+        "gitignoreHider.autoHideOnStartup": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically hide .gitignore entries when a workspace opens."
+        },
+        "gitignoreHider.additionalPatterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Extra glob patterns to always hide (merged with .gitignore)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.4.0"
+  }
+}
